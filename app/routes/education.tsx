@@ -25,13 +25,13 @@ const Education = () => {
               </div>
             )}
             {body.name && (
-              <div className="name flex items-center">
+              <div className="name">
                 <strong>{body.name}</strong>
                 {body.type && (
-                  <>
+                  <div className="type">
                     <span className="type">{" - "}</span>
                     <span>{body.type}</span>
-                  </>
+                  </div>
                 )}
               </div>
             )}

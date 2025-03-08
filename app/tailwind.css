@@ -64,6 +64,9 @@ nav > ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 
 nav > ul > li {
@@ -101,7 +104,7 @@ h3 {
   font-size: 36px;
   text-transform: uppercase;
   margin: 20px 0px 60px;
-  @media screen and(max-width: 1000px) {
+  @media screen and (max-width: 1000px) {
     margin: 20px 0px;
   }
 }
@@ -143,11 +146,18 @@ div.period::before {
   background: #ffffff44;
 }
 
+div.type {
+  display: inline-block;
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+}
+
 section.section {
   padding-bottom: 32px;
   padding: 40px;
   min-height: calc(100svh - 72px - 52px);
-  @media screen and(max-width: 1000px) {
+  @media screen and (max-width: 1000px) {
     padding: 0px 30px;
   }
 }
@@ -165,23 +175,19 @@ span.type::before {
 
 div.name {
   padding-left: 14px;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
 }
 
 .content {
-  /* margin-left: 20px; */
   margin-bottom: 20px;
 }
 
 .body-content {
   margin-left: 20px;
-}
-.body-content::before {
-  content: "";
-  /* display: inline-block;
-  width: 16px;
-  height: 20px;
-  margin-right: 10px;
-  background: #ffffff44; */
 }
 
 div.container-wrapper {
@@ -196,7 +202,7 @@ div.container {
   width: 1000px;
   position: relative;
 
-  @media screen and(max-width: 1000px) {
+  @media screen and (max-width: 1000px) {
     width: 100%;
   }
 }
