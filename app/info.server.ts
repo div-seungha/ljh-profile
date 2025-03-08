@@ -80,5 +80,12 @@ export async function getSheetData() {
     }
   }
   const result2 = transformed;
-  return { data: { profile: result1, career: result2 } };
+  return {
+    ...result1,
+    education: result2.education,
+    projects: result2.projects,
+    works: result2.works,
+    tutoring: result2.tutoring,
+    publishing: result2.publishing,
+  };
 }
