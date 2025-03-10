@@ -232,9 +232,6 @@ div.name {
   padding-left: 14px;
   display: flex;
   align-items: center;
-  @media screen and (max-width: 1000px) {
-    display: block;
-  }
 }
 
 .content {
