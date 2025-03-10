@@ -293,7 +293,7 @@ aside.lnb {
   display: none;
   @media screen and (max-width: 1000px) {
     position: absolute;
-    left: 0;
+    left: -200px;
     top: 0;
     width: 200px;
     height: 100svh;
