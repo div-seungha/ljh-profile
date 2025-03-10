@@ -14,6 +14,7 @@ import "./tailwind.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { getCategoryKeys, getSheetData } from "./info.server";
+import useStore, { useColorStore } from "./store/store";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -45,36 +46,34 @@ export const loader = async () => {
   return json({ categories, profile, ...sheetData });
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App() {
+  const lang = useStore((state) => state.lang);
+  const color = useColorStore((state) => state.color);
+
+  const data: any = useLoaderData();
+  const { categories } = data;
+
   return (
-    <html lang="ko">
+    <html lang={lang}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className={color}>
+        <div className="container-wrapper">
+          <div className="container">
+            <Header categories={categories} />
+            <main>
+              <Outlet />
+            </main>
+            <Footer />
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
-  );
-}
-
-export default function App() {
-  const data: any = useLoaderData();
-  const { categories } = data;
-  return (
-    <div className="container-wrapper">
-      <div className="container">
-        <Header categories={categories} />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </div>
   );
 }

@@ -1,6 +1,9 @@
 import { Link } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { GrLanguage } from "react-icons/gr";
+import useStore, { useColorStore } from "~/store/store";
 
 const Lnb = ({
   categories,
@@ -41,15 +44,27 @@ const Header = ({ categories }: { categories: string[] }) => {
   const handleBackdropClick = () => {
     setIsShowLnb(false);
   };
-  //   useEffect(() => {
-  //     const hideLnb = () => {
-  //       if (isShowLnb) {
-  //         setIsShowLnb(false);
-  //       }
-  //     };
-  //     window.addEventListener("click", hideLnb);
-  //     return () => window.removeEventListener("click", hideLnb);
-  //   }, []);
+
+  const lang = useStore((state) => state.lang);
+  const setLang = useStore((state) => state.setLang);
+
+  const color = useColorStore((state) => state.color);
+  const setColor = useColorStore((state) => state.setColor);
+
+  const handleLangChange = () => {
+    if (lang === "ko") {
+      setLang("en");
+      return;
+    }
+    setLang("ko");
+  };
+  const handleColorChange = () => {
+    if (color === "dark") {
+      setColor("light");
+      return;
+    }
+    setColor("dark");
+  };
 
   return (
     <header>
@@ -63,18 +78,33 @@ const Header = ({ categories }: { categories: string[] }) => {
           </button>
         </div>
         <nav>
-          <ul>
+          <ul className="category">
             {categories &&
               categories.length &&
               categories.map((v: string, i: number) => {
                 return (
                   <li key={i}>
-                    <Link to={"/" + `${v}`} viewTransition reloadDocument>
+                    <Link to={"/" + `${v}`} viewTransition>
                       {v}
                     </Link>
                   </li>
                 );
               })}
+          </ul>
+          <ul>
+            <li>
+              <button
+                className="nav-icon-container"
+                onClick={handleColorChange}
+              >
+                {color === "dark" ? <FaSun /> : <FaMoon />}
+              </button>
+            </li>
+            <li>
+              <button className="nav-icon-container" onClick={handleLangChange}>
+                <GrLanguage />
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
