@@ -7,7 +7,7 @@ const CategoryRoute = () => {
 
   return (
     <section className="section">
-      <h3 className="animate-from-down">{category}</h3>
+      <h2 className="animate-from-down">{category}</h2>
 
       {content.map((item: any, index: number) => {
         const { body } = item;
