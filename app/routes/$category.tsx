@@ -11,6 +11,8 @@ const CategoryRoute = () => {
 
       {content.map((item: any, index: number) => {
         const { body } = item;
+        const contentList = body.content.split("|");
+        console.log(contentList);
 
         return (
           <div className="content" key={index}>
@@ -30,14 +32,21 @@ const CategoryRoute = () => {
                 )}
               </div>
             )}
-            {body.content && (
-              <div className="flex items-center animate-from-right-3">
-                <div className="body-content">
-                  <span className="type">{" - "}</span>
-                  {body.content}
-                </div>
-              </div>
-            )}
+            {body.content &&
+              contentList.length &&
+              contentList.map((v, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="flex items-center animate-from-right-3"
+                  >
+                    <div className="body-content">
+                      <span className="type">{" - "}</span>
+                      {v}
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         );
       })}

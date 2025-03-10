@@ -1,12 +1,14 @@
 import { google } from "googleapis";
+// import credentials from "./credentials.json";
 import "dotenv/config";
 
 type Entry = {
   order: string;
   body: {
-    period: string;
-    name: string;
-    type: string;
+    period?: string;
+    name?: string;
+    type?: string;
+    content?: string;
   };
 };
 
@@ -27,8 +29,6 @@ const credentials = {
 };
 
 const spreadsheetId = process.env.SPREADSHEET_ID;
-
-console.log("*****", process.env.SPREADSHEET_ID);
 
 export async function getSheetData() {
   const auth = new google.auth.GoogleAuth({
@@ -80,7 +80,10 @@ export async function getSheetData() {
       }
 
       if (order) {
-        currentEntry = { order, body: { period: "", name: "", type: "" } };
+        currentEntry = {
+          order,
+          body: { period: "", name: "", type: "", content: "" },
+        };
         currentEntry.body[key] = value;
         if (currentEntry) {
           transformed[currentCategory].push(currentEntry);
