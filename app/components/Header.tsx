@@ -80,11 +80,7 @@ const Header = ({ categories }: { categories: string[] }) => {
       </div>
       {isShowLnb && (
         <button className="lnb-background" onClick={handleBackdropClick}>
-          <aside
-            className={
-              "lnb " + `${isShowLnb ? "animate-show-lnb" : "animate-hide-lnb"}`
-            }
-          >
+          <aside className={"lnb"}>
             <Lnb
               categories={categories}
               onHamburgerClick={handleHamburgerClick}

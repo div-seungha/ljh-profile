@@ -298,7 +298,7 @@ footer {
   width: 100%;
   height: 100svh;
   overflow: hidden;
-  background: #24242444;
+  background: #24242488;
   cursor: default;
 }
 
@@ -306,8 +306,8 @@ aside.lnb {
   display: none;
   @media screen and (max-width: 1000px) {
     position: absolute;
-    z-index: 2000;
-    left: -200px;
+    z-index: 10000;
+    left: 0px;
     top: 0;
     width: 200px;
     height: 100svh;
