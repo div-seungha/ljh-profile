@@ -293,6 +293,7 @@ aside.lnb {
   display: none;
   @media screen and (max-width: 1000px) {
     position: absolute;
+    z-index: 2000;
     left: -200px;
     top: 0;
     width: 200px;
@@ -326,11 +327,9 @@ aside nav > ul {
 }
 
 .animate-show-lnb {
-  transform: translateX(-200px);
   animation: 500ms ease-in forwards 0.5s showLnb;
 }
 .animate-hide-lnb {
-  transform: translateX(0px);
   animation: 500ms ease-in forwards 0.5s hideLnb;
 }
 
@@ -369,17 +368,17 @@ aside nav > ul {
 
 @keyframes showLnb {
   from {
-    transform: translateX(-200px);
+    transform: translateX(0px);
   }
   to {
-    transform: translateX(0px);
+    transform: translateX(200px);
   }
 }
 @keyframes hideLnb {
   from {
-    transform: translateX(0px);
+    transform: translateX(200px);
   }
   to {
-    transform: translateX(-200px);
+    transform: translateX(0px);
   }
 }
