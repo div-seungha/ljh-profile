@@ -15,9 +15,9 @@ export default function Index() {
 
   return (
     <section className="section">
-      {keys.map((v, i) => {
+      {/* {keys.map((v, i) => {
         return <div key={i}>{content[v]}</div>;
-      })}
+      })} */}
     </section>
   );
 }

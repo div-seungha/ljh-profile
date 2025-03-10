@@ -7,7 +7,7 @@ const CategoryRoute = () => {
 
   return (
     <section className="section">
-      <h3>{category}</h3>
+      <h3 className="animate-from-down">{category}</h3>
 
       {content.map((item: any, index: number) => {
         const { body } = item;
@@ -15,12 +15,12 @@ const CategoryRoute = () => {
         return (
           <div className="content" key={index}>
             {body.period && (
-              <div className="period flex items-center">
+              <div className="period flex items-center animate-from-right-1">
                 <span className="period">{body.period}</span>
               </div>
             )}
             {body.name && (
-              <div className="name">
+              <div className="name animate-from-right-2">
                 <strong>{body.name}</strong>
                 {body.type && (
                   <div className="type">
@@ -31,7 +31,7 @@ const CategoryRoute = () => {
               </div>
             )}
             {body.content && (
-              <div className="flex items-center">
+              <div className="flex items-center animate-from-right-3">
                 <div className="body-content">
                   <span className="type">{" - "}</span>
                   {body.content}

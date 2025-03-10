@@ -14,7 +14,9 @@ const Header = ({ categories }: { categories: string[] }) => {
               categories.map((v: string, i: number) => {
                 return (
                   <li key={i}>
-                    <Link to={"/" + `${v}`}>{v}</Link>
+                    <Link to={"/" + `${v}`} viewTransition reloadDocument>
+                      {v}
+                    </Link>
                   </li>
                 );
               })}
