@@ -39,15 +39,15 @@ const Header = ({ categories }: { categories: string[] }) => {
     setIsShowLnb(!isShowLnb);
   };
 
-  useEffect(() => {
-    const hideLnb = () => {
-      if (isShowLnb) {
-        setIsShowLnb(false);
-      }
-    };
-    window.addEventListener("click", hideLnb);
-    return () => window.removeEventListener("click", hideLnb);
-  }, []);
+  //   useEffect(() => {
+  //     const hideLnb = () => {
+  //       if (isShowLnb) {
+  //         setIsShowLnb(false);
+  //       }
+  //     };
+  //     window.addEventListener("click", hideLnb);
+  //     return () => window.removeEventListener("click", hideLnb);
+  //   }, []);
 
   return (
     <header>
