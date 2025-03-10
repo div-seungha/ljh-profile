@@ -1,4 +1,6 @@
-# A Profile website with using Google Sheet as a database
+# One of my side projects
+
+A Profile website with using Google Sheet as a database
 
 ### Tech Stack Used
 - Typescript
