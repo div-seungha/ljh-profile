@@ -137,30 +137,6 @@ strong {
   font-weight: 700;
 }
 
-@keyframes mainbg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-div.main-img {
-  width: 100%;
-  height: 630px;
-  background-image: url("/public/asset/main-bg.svg");
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-}
-
-.profile-img {
-  position: absolute;
-  top: 100px;
-  left: 20px;
-  animation: 500ms ease-in forwards 0.6s mainbg;
-}
-
 div.period::before {
   content: "";
   display: inline-block;

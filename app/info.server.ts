@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import "dotenv/config";
 
 type Entry = {
   order: string;
@@ -25,6 +26,10 @@ const credentials = {
   universe_domain: process.env.universe_domain,
 };
 
+const spreadsheetId = process.env.SPREADSHEET_ID;
+
+console.log("*****", process.env.spreadsheet_id);
+
 export async function getSheetData() {
   const auth = new google.auth.GoogleAuth({
     credentials,
@@ -32,7 +37,6 @@ export async function getSheetData() {
   });
 
   const sheets = google.sheets({ version: "v4", auth });
-  const spreadsheetId = process.env.SPREADSHEET_ID;
 
   const responseDepth1 = await sheets.spreadsheets.values.get({
     spreadsheetId,
