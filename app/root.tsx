@@ -1,13 +1,19 @@
 import {
   Links,
   Meta,
+  MetaFunction,
   Outlet,
   Scripts,
   ScrollRestoration,
+  json,
+  useLoaderData,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { getCategoryKeys, getSheetData } from "./info.server";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -22,9 +28,26 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export const meta: MetaFunction = () => {
+  return [
+    { title: "안녕하세요 이지훈입니다." },
+    { name: "description", content: "이지훈" },
+  ];
+};
+
+export const loader = async () => {
+  const rawData = await getSheetData();
+  const { sheetData } = rawData;
+  const categoryData = await getCategoryKeys();
+
+  const categories = categoryData.categories;
+
+  return json({ categories, ...sheetData });
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,5 +64,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const data: any = useLoaderData();
+  const { categories } = data;
+  return (
+    <div className="container-wrapper">
+      <div className="container">
+        <Header categories={categories} />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  );
 }

@@ -1,12 +1,240 @@
+@font-face {
+  font-family: "Wanted Sans";
+  src: url("/fonts/WantedSansStd-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wanted Sans";
+  src: url("/fonts/WantedSansStd-Bold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wanted Sans";
+  src: url("/fonts/WantedSansStd-SemiBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wanted Sans";
+  src: url("/fonts/WantedSansStd-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wanted Sans";
+  src: url("/fonts/WantedSansStd-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-bg-gradient-dark: #1a1a1c;
+  --color-bg-gradient-light: #131337;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ffffff88;
+  --color-border: #ffffff55;
+  --color-marker: #ffffff44;
+}
+
+@layer base {
+  :root {
+    --color-bg-gradient-dark: #1a1a1c;
+    --color-bg-gradient-light: #131337;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #ffffff88;
+    --color-border: #ffffff55;
+    --color-marker: #ffffff44;
+  }
+  .light {
+    --color-bg-gradient-dark: #f1f9ff;
+    --color-bg-gradient-light: #fbfdff;
+    --color-text-primary: #131337;
+    --color-text-secondary: #13133788;
+    --color-border: #13133755;
+    --color-marker: #13133744;
+  }
+}
+
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  color: var(--color-text-primary);
+  font-family: "Wanted Sans", sans-serif;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+body {
+  background: linear-gradient(to top, #1a1a1c 50%, #131337);
+  width: 100%;
+  height: 100svh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  padding-top: 72px;
+}
+
+nav > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}
+
+nav > ul > li {
+  margin: 0px 20px;
+  color: var(--color-text-secondary);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+nav > ul > li:hover {
+  color: var(--color-text-primary);
+}
+
+header {
+  height: 72px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  position: fixed;
+  top: 0px;
+  backdrop-filter: blur(10px);
+}
+
+header > div {
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 36px;
+  text-transform: uppercase;
+  margin: 20px 0px 60px;
+  @media screen and (max-width: 1000px) {
+    margin: 20px 0px;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+@keyframes mainbg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+div.main-img {
+  width: 100%;
+  height: 630px;
+  background-image: url("/public/asset/main-bg.svg");
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+}
+
+.profile-img {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  animation: 500ms ease-in forwards 0.6s mainbg;
+}
+
+div.period::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 20px;
+  margin-right: 10px;
+  background: var(--color-marker);
+}
+
+div.type {
+  display: inline-block;
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+}
+
+section.section {
+  padding-bottom: 32px;
+  padding: 40px;
+  min-height: calc(100svh - 72px - 52px);
+  @media screen and (max-width: 1000px) {
+    padding: 0px 30px;
+  }
+}
+
+span.type {
+  margin: 0px 8px;
+}
+
+span.type::before {
+  content: "";
+  width: 1px;
+  height: 18px;
+  background: var(--color-text-primary);
+}
+
+div.name {
+  padding-left: 14px;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+}
+
+.content {
+  margin-bottom: 20px;
+}
+
+.body-content {
+  margin-left: 20px;
+}
+
+div.container-wrapper {
+  width: 100%;
+  height: 100svh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+}
+
+div.container {
+  width: 1000px;
+  position: relative;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text-secondary);
+  font-size: 12px;
 }
