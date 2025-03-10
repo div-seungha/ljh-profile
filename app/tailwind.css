@@ -298,8 +298,7 @@ footer {
   width: 100%;
   height: 100svh;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  background: #ffffff44;
+  background: #24242444;
   cursor: default;
 }
 
