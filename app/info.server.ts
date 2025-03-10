@@ -30,7 +30,7 @@ export async function getSheetData() {
     range: "depth2",
   });
 
-  const data1 = responseDepth1.data.values;
+  const data1 = responseDepth1.data.values?.slice(1);
   const result1 = {};
 
   if (data1) {
@@ -46,7 +46,7 @@ export async function getSheetData() {
     }
   }
 
-  const data2 = responseDepth2.data.values;
+  const data2 = responseDepth2.data.values?.slice(1);
 
   const transformed: TransformedData = {};
 
@@ -79,6 +79,8 @@ export async function getSheetData() {
       transformed[currentCategory].push(currentEntry);
     }
   }
+
+  // TODO: order에 따른 sort 기능 추가해야 함
 
   const contentKeys = Object.keys(transformed);
   const result2 = contentKeys.reduce((acc, cur) => {

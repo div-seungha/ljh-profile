@@ -37,12 +37,12 @@ export const meta: MetaFunction = () => {
 
 export const loader = async () => {
   const rawData = await getSheetData();
-  const { sheetData } = rawData;
+  const { profile, sheetData } = rawData;
   const categoryData = await getCategoryKeys();
 
   const categories = categoryData.categories;
 
-  return json({ categories, ...sheetData });
+  return json({ categories, profile, ...sheetData });
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
