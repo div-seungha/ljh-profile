@@ -12,7 +12,6 @@ const CategoryRoute = () => {
       {content.map((item: any, index: number) => {
         const { body } = item;
         const contentList = body.content.split("|");
-        console.log(contentList);
 
         return (
           <div className="content" key={index}>
