@@ -28,7 +28,7 @@ const credentials = {
 
 const spreadsheetId = process.env.SPREADSHEET_ID;
 
-console.log("*****", process.env.spreadsheet_id);
+console.log("*****", process.env.SPREADSHEET_ID);
 
 export async function getSheetData() {
   const auth = new google.auth.GoogleAuth({
