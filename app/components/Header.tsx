@@ -10,7 +10,7 @@ const Lnb = ({
   onHamburgerClick: () => void;
 }) => {
   return (
-    <>
+    <div>
       <button onClick={onHamburgerClick}>
         <HiMenu />
       </button>
@@ -29,7 +29,7 @@ const Lnb = ({
             })}
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 
@@ -38,7 +38,9 @@ const Header = ({ categories }: { categories: string[] }) => {
   const handleHamburgerClick = () => {
     setIsShowLnb(!isShowLnb);
   };
-
+  const handleBackdropClick = () => {
+    setIsShowLnb(false);
+  };
   //   useEffect(() => {
   //     const hideLnb = () => {
   //       if (isShowLnb) {
@@ -76,13 +78,20 @@ const Header = ({ categories }: { categories: string[] }) => {
           </ul>
         </nav>
       </div>
-      <aside
-        className={
-          "lnb " + `${isShowLnb ? "animate-show-lnb" : "animate-hide-lnb"}`
-        }
-      >
-        <Lnb categories={categories} onHamburgerClick={handleHamburgerClick} />
-      </aside>
+      {isShowLnb && (
+        <button className="lnb-background" onClick={handleBackdropClick}>
+          <aside
+            className={
+              "lnb " + `${isShowLnb ? "animate-show-lnb" : "animate-hide-lnb"}`
+            }
+          >
+            <Lnb
+              categories={categories}
+              onHamburgerClick={handleHamburgerClick}
+            />
+          </aside>
+        </button>
+      )}
     </header>
   );
 };
