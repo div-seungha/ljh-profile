@@ -2,6 +2,8 @@ import type { MetaFunction } from "@remix-run/node";
 import { useRouteLoaderData } from "@remix-run/react";
 import { SiLinkedin } from "react-icons/si";
 import { LuPodcast } from "react-icons/lu";
+import { useColorStore } from "~/store/store";
+import MainBackground from "~/components/MainBackground";
 
 export const meta: MetaFunction = () => {
   return [{ title: "이지훈" }, { name: "description", content: "이지훈" }];
@@ -11,20 +13,32 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   const data: any = useRouteLoaderData("root");
-
   const content = data.profile;
 
+  const color = useColorStore((state) => state.color);
+  const imageUrl =
+    color === "dark" ? content.profileImageDark : content.profileImageLight;
+
   return (
-    <section className="section">
-      <h1 className="animation-from-up">{content.greeting}</h1>
-      <p className="main-introduction">{content.introduction}</p>
-      <div className="main-icon-container">
-        <a href={content.podcast} target="_blank" rel="noreferrer">
-          <LuPodcast />
-        </a>
-        <a href={content.linkedin} target="_blank" rel="noreferrer">
-          <SiLinkedin />
-        </a>
+    <section>
+      <div className="main-top-image-container">
+        <MainBackground />
+        <img className="profile animate-fade-in" src={imageUrl} alt="이지훈" />
+        <h1 className="animate-from-up greeting">{content.greeting}</h1>
+        <p className="animate-from-up sub-greeting">{content.subgreeting}</p>
+      </div>
+      <div className="main-content-container">
+        <p className="main-introduction animate-from-right">
+          {content.introduction}
+        </p>
+        <div className="main-icon-container">
+          <a href={content.podcast} target="_blank" rel="noreferrer">
+            <LuPodcast />
+          </a>
+          <a href={content.linkedin} target="_blank" rel="noreferrer">
+            <SiLinkedin />
+          </a>
+        </div>
       </div>
     </section>
   );

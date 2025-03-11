@@ -123,6 +123,8 @@ header nav > ul > li:hover {
 }
 
 header {
+  width: 1000px;
+  box-sizing: border-box;
   height: 72px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
@@ -285,6 +287,12 @@ footer {
   align-items: center;
   color: var(--color-text-secondary);
   font-size: 12px;
+  margin-top: 100px;
+}
+
+.animate-from-right {
+  animation: 500ms ease-in forwards 0.5s fromRight;
+  opacity: 0;
 }
 
 .animate-from-right-1 {
@@ -369,6 +377,96 @@ aside nav > ul {
   animation: 500ms ease-in forwards 0.5s hideLnb;
 }
 
+.main-top-image-container {
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  height: 493px;
+  @media screen and (max-width: 1000px) {
+    height: 400px;
+  }
+}
+
+.main-top-image-container h1.greeting {
+  z-index: 1000;
+  position: absolute;
+  right: 40px;
+  bottom: 200px;
+  width: 560px;
+  text-align: right;
+  margin: 0;
+  display: inline-block;
+  line-height: 1.1;
+  @media screen and (max-width: 1000px) {
+    font-size: 32px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    padding: 0px 40px;
+    box-sizing: border-box;
+    top: 40px;
+  }
+}
+
+.main-top-image-container p.sub-greeting {
+  z-index: 1000;
+  position: absolute;
+  right: 40px;
+  font-weight: 600;
+  font-size: 20px;
+  bottom: 80px;
+  width: 480px;
+  text-align: right;
+  line-height: 1.2;
+  margin: 0;
+  display: inline-block;
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.main-content-container {
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  @media screen and (max-width: 1000px) {
+    padding: 40px;
+  }
+}
+
+.main-top-image-container svg {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.main-top-image-container img.profile {
+  position: absolute;
+  z-index: 1000;
+  bottom: 0px;
+  left: -20px;
+  opacity: 1;
+  width: 707px;
+  display: block;
+  @media screen and (max-width: 1000px) {
+    width: 600px;
+  }
+}
+
+.animate-fade-in {
+  animation: 3s ease-in forwards 0s fadeIn;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fromRight {
   from {
     opacity: 0;
@@ -416,5 +514,14 @@ aside nav > ul {
   }
   to {
     transform: translateX(0px);
+  }
+}
+
+@keyframes mainBg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
