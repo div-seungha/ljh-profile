@@ -50,6 +50,7 @@
     --color-text-secondary: #ffffff88;
     --color-border: #ffffff55;
     --color-marker: #ffffff44;
+    --color-main-image-gradient: #16162c;
   }
   .light {
     --color-bg-gradient-dark: #f1f9ff;
@@ -58,6 +59,7 @@
     --color-text-secondary: #1a1a1c88;
     --color-border: #1a1a1c55;
     --color-marker: #1a1a1c44;
+    --color-main-image-gradient: #f7fbff;
   }
 }
 
@@ -65,6 +67,8 @@ html,
 body {
   color: var(--color-text-primary);
   font-family: "Wanted Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -74,18 +78,26 @@ body {
 body {
   background: linear-gradient(
     to top,
-    var(--color-bg-gradient-dark) 50%,
+    var(--color-bg-gradient-dark) 20%,
     var(--color-bg-gradient-light)
   );
   width: 100%;
-  height: 100svh;
+  min-height: 100svh;
   overflow-y: scroll;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    height: auto;
+  }
 }
 
 main {
   padding-top: 72px;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    height: auto;
+  }
 }
 
 header nav {
@@ -123,14 +135,13 @@ header nav > ul > li:hover {
 }
 
 header {
-  width: 1000px;
+  width: 100%;
   box-sizing: border-box;
   height: 72px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 20px;
   position: fixed;
   top: 0px;
   z-index: 1000;
@@ -141,7 +152,7 @@ header {
   }
 }
 
-header > div {
+header > div.header-container {
   width: 1000px;
   display: flex;
   justify-content: space-between;
@@ -150,10 +161,6 @@ header > div {
 
 span.nav-home {
   transition: all 0.3s;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 20px;
   @media screen and (max-width: 1000px) {
     opacity: 0;
   }
@@ -211,11 +218,16 @@ div.type {
 }
 
 section.section {
+  min-width: 1000px;
   padding-bottom: 32px;
   padding: 40px;
   min-height: calc(100svh - 72px - 52px);
   @media screen and (max-width: 1000px) {
     padding: 0px 30px;
+    min-width: 100%;
+    width: 100%;
+
+    /* max-width: 1000px; */
   }
 }
 
@@ -273,8 +285,9 @@ div.container-wrapper {
 }
 
 div.container {
-  width: 1000px;
   position: relative;
+  display: flex;
+  justify-content: center;
 
   @media screen and (max-width: 1000px) {
     width: 100%;
@@ -325,11 +338,11 @@ footer {
   border: 0;
   top: 0;
   left: 0;
-  z-index: 5000;
+  z-index: 100000;
   width: 100%;
   height: 100svh;
   overflow: hidden;
-  background: #24242488;
+  background: #24242499;
   cursor: default;
 }
 
@@ -337,7 +350,7 @@ aside.lnb {
   display: none;
   @media screen and (max-width: 1000px) {
     position: absolute;
-    z-index: 10000;
+    z-index: 100000;
     left: 0px;
     top: 0;
     width: 200px;
@@ -379,6 +392,8 @@ aside nav > ul {
 
 .main-top-image-container {
   position: relative;
+  width: 100svw;
+  padding: 0px 100px;
   border-bottom: 1px solid var(--color-border);
   overflow: hidden;
   height: 493px;
@@ -387,10 +402,29 @@ aside nav > ul {
   }
 }
 
-.main-top-image-container h1.greeting {
-  z-index: 1000;
+.main-background-gradient-cover {
   position: absolute;
-  right: 40px;
+  width: 100%;
+  height: 500px;
+  left: 0;
+  z-index: 50;
+  background: linear-gradient(
+    to right,
+    var(--color-main-image-gradient),
+    80%,
+    #ffffff00
+  );
+}
+
+.main-top-image-container > svg {
+  position: absolute;
+  right: 0;
+}
+
+.main-top-image-container h1.greeting {
+  z-index: 100;
+  position: absolute;
+  right: 120px;
   bottom: 200px;
   width: 560px;
   text-align: right;
@@ -409,13 +443,14 @@ aside nav > ul {
 }
 
 .main-top-image-container p.sub-greeting {
-  z-index: 1000;
+  z-index: 100;
   position: absolute;
-  right: 40px;
+  right: 120px;
   font-weight: 600;
   font-size: 20px;
+  color: var(--color-text-secondary);
   bottom: 80px;
-  width: 480px;
+  width: 600px;
   text-align: right;
   line-height: 1.2;
   margin: 0;
@@ -426,6 +461,8 @@ aside nav > ul {
 }
 
 .main-content-container {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
   margin-bottom: 40px;
@@ -442,9 +479,9 @@ aside nav > ul {
 
 .main-top-image-container img.profile {
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   bottom: 0px;
-  left: -20px;
+  left: 120px;
   opacity: 1;
   width: 707px;
   display: block;
@@ -454,7 +491,7 @@ aside nav > ul {
 }
 
 .animate-fade-in {
-  animation: 3s ease-in forwards 0s fadeIn;
+  animation: 2s ease-in forwards 0s fadeIn;
   opacity: 0;
 }
 

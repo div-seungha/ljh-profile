@@ -68,9 +68,9 @@ export default function App() {
             <main>
               <Outlet />
             </main>
-            <Footer />
           </div>
         </div>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>

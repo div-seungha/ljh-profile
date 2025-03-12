@@ -3,6 +3,7 @@ import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
+import { FaHome } from "react-icons/fa";
 import useStore, { useColorStore } from "~/store/store";
 
 const Lnb = ({
@@ -19,12 +20,17 @@ const Lnb = ({
       </button>
       <nav>
         <ul>
+          <li>
+            <Link to="/" viewTransition>
+              <FaHome />
+            </Link>
+          </li>
           {categories &&
             categories.length &&
             categories.map((v: string, i: number) => {
               return (
                 <li key={i}>
-                  <Link to={"/" + `${v}`} viewTransition reloadDocument>
+                  <Link to={"/" + `${v}`} viewTransition>
                     {v}
                   </Link>
                 </li>
@@ -68,7 +74,7 @@ const Header = ({ categories }: { categories: string[] }) => {
 
   return (
     <header>
-      <div>
+      <div className="header-container">
         <div>
           <span className="nav-home">
             <Link to="/">Lee Jihoon</Link>
