@@ -37,16 +37,17 @@ export default function Index() {
           <div className="main-top-image-container">
             <div className="main-background-gradient-cover"></div>
             <MainBackground />
-
-            <img
-              className="profile animate-fade-in"
-              src={imageUrl}
-              alt="이지훈"
-            />
-            <h1 className="animate-from-up greeting">{content.greeting}</h1>
-            <p className="animate-from-up sub-greeting">
-              {content.subgreeting}
-            </p>
+            <div className="main-image-content-container">
+              <img
+                className="profile animate-fade-in"
+                src={imageUrl}
+                alt="이지훈"
+              />
+              <h1 className="animate-from-up greeting">{content.greeting}</h1>
+              <p className="animate-from-up sub-greeting">
+                {content.subgreeting}
+              </p>
+            </div>
           </div>
           <div className="main-content-container">
             <p className="main-introduction animate-from-right">
