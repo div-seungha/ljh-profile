@@ -106,11 +106,11 @@ const Header = ({ categories }: { categories: string[] }) => {
                 {color === "dark" ? <FaSun /> : <FaMoon />}
               </button>
             </li>
-            <li>
+            {/* <li>
               <button className="nav-icon-container" onClick={handleLangChange}>
                 <GrLanguage />
               </button>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
