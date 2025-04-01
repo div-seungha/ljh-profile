@@ -17,8 +17,10 @@ export default function Index() {
   const content = data.profile;
 
   const color = useColorStore((state) => state.color);
-  const imageUrl =
-    color === "dark" ? content.profileImageDark : content.profileImageLight;
+  // const imageUrl =
+  //   color === "dark" ? content.profileImageDark : content.profileImageLight;
+
+  const imageUrl = "/asset/bigdata.webp";
 
   const [isShowImg, setIsShowImg] = useState(false);
 
@@ -35,18 +37,34 @@ export default function Index() {
       {isShowImg ? (
         <>
           <div className="main-top-image-container">
+            <img
+              className="profile animate-fade-in"
+              src={imageUrl}
+              alt="이지훈"
+            />
             <div className="main-background-gradient-cover"></div>
             <MainBackground />
             <div className="main-image-content-container">
-              <img
-                className="profile animate-fade-in"
-                src={imageUrl}
-                alt="이지훈"
-              />
-              <h1 className="animate-from-up greeting">{content.greeting}</h1>
-              <p className="animate-from-up sub-greeting">
-                {content.subgreeting}
-              </p>
+              <h1 className="greeting">
+                {content.greeting.split("|").map((v, i) => {
+                  console.log(v);
+                  return (
+                    <p key={i} className="animate-from-up">
+                      {v}
+                    </p>
+                  );
+                })}
+              </h1>
+              <div className="sub-greeting">
+                {content.subgreeting.split("|").map((v, i) => {
+                  console.log(v);
+                  return (
+                    <p key={i} className="animate-from-up">
+                      {v}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div className="main-content-container">
@@ -64,7 +82,13 @@ export default function Index() {
           </div>
         </>
       ) : (
-        "로딩 중"
+        <div className="loading-container">
+          <div>
+            <div className="loading-dot"></div>
+            <div className="loading-dot"></div>
+            <div className="loading-dot"></div>
+          </div>
+        </div>
       )}
     </section>
   );

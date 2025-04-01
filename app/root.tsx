@@ -63,7 +63,7 @@ export default function App() {
       </head>
       <body className={color}>
         <div className="container-wrapper">
-          <div className="container">
+          <div className="whole-container">
             <Header categories={categories} />
             <main>
               <Outlet />

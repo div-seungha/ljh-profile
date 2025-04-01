@@ -8,7 +8,7 @@ const CategoryRoute = () => {
 
   const [sectionClass, setSectionClass] = useState("");
 
-  const location = window.location.pathname;
+  const location = window ? window.location.pathname : "";
 
   useEffect(() => {
     setSectionClass("");

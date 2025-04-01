@@ -3,7 +3,17 @@ const Footer = () => {
   return (
     <footer className="w-full h-[52px] flex justify-center">
       <div className="flex">
-        &copy;{" " + year + " "} Powered By Seungha Kim. All Rights Reserved.
+        &copy;{" " + year + " "} Publshed by{"    "}
+        <a
+          href="https://beonanotherplanet.com"
+          target="_blank"
+          rel="noreferrer"
+          className="mx-1"
+        >
+          {" "}
+          Seungha Kim.
+        </a>
+        All Rights Reserved.
       </div>
     </footer>
   );
